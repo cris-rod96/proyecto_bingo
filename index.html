@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bingo</title>
+    <link
+      rel="shortcut icon"
+      href="./assets/img/icono.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <div class="mainContainer">
+      <div class="headerContainer">
+        <div class="nav">
+          <div class="icon selected">
+            <img src="./assets/img/icon_bingo.png" alt="Generar tablas" />
+            <span>Generar</span>
+          </div>
+          <div class="icon">
+            <img src="./assets/img/icon_pdf.png" alt="Generar pdf" />
+            <span>PDF</span>
+          </div>
+          <div class="icon">
+            <img src="./assets/img/icon_jugar.png" alt="Jugar Bingo" />
+            <span>Jugar</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contentContainer">
+        <div class="datosContainer">
+          <form action="" class="form" id="form">
+            <fieldset class="config" id="configHeader">
+              <legend>Encabezado General</legend>
+              <div class="formGroup">
+                <label for="titulo" class="formGroup-label"
+                  >Título General</label
+                >
+                <input
+                  type="text"
+                  name="titulo"
+                  id="titulo"
+                  class="formGroup-input"
+                  required
+                />
+              </div>
+              <div class="formGroup formGroup-double">
+                <div class="formGroup">
+                  <label for="fecha_bingo" class="formGroup-label">Fecha</label>
+                  <input
+                    type="date"
+                    id="fecha_bingo"
+                    class="formGroup-input"
+                    required
+                  />
+                </div>
+                <div class="formGroup">
+                  <label for="hora_bingo" class="formGroup-label">Hora</label>
+                  <input
+                    type="time"
+                    id="hora_bingo"
+                    class="formGroup-input"
+                    required
+                  />
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="config" id="configFirst">
+              <legend>Juego Express</legend>
+              <div class="formGroup formGroup-triple">
+                <div class="formGroup">
+                  <label for="ex_cant_cart" class="formGroup-label"
+                    >Cartillas por página</label
+                  >
+                  <input
+                    type="number"
+                    class="formGroup-input"
+                    id="ex_cant_cart"
+                    required
+                  />
+                </div>
+
+                <div class="formGroup">
+                  <label for="ex_cant_num_cart" class="formGroup-label"
+                    >Números por cartilla</label
+                  >
+                  <input
+                    type="number"
+                    class="formGroup-input"
+                    id="ex_cant_num_cart"
+                    required
+                  />
+                </div>
+                <div class="formGroup">
+                  <label for="ex_num_formas" class="formGroup-label"
+                    >Forma de los números</label
+                  >
+                  <select name="" id="ex_num_formas" class="formGroup-select">
+                    <option value="circle">Círculo</option>
+                    <option value="square">Square</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="config" id="configSecond">
+              <legend>Tabla Llena</legend>
+              <div class="formGroup">
+                <label for="tbl_cant_cart" class="formGroup-label"
+                  >Cartillas por página</label
+                >
+                <input
+                  type="number"
+                  class="formGroup-input"
+                  id="tbl_cant_cart"
+                  required
+                />
+              </div>
+            </fieldset>
+
+            <fieldset class="config" id="configThir">
+              <legend>Último juego</legend>
+              <div class="formGroup">
+                <label for="tbnum_cant_cart" class="formGroup-label"
+                  >Cartillas por página</label
+                >
+
+                <input
+                  type="number"
+                  id="tbnum_cant_cart"
+                  class="formGroup-input"
+                  required
+                />
+              </div>
+            </fieldset>
+            <fieldset class="config" id="configGenerate">
+              <legend>Generar Juego</legend>
+
+              <div class="formGroup">
+                <label for="cantidad_juegos" class="formGroup-label"
+                  >Cantidad de juegos</label
+                >
+                <input
+                  type="number"
+                  class="formGroup-input"
+                  id="cantidad_juegos"
+                  required
+                />
+              </div>
+            </fieldset>
+
+            <div class="formGroup">
+              <button type="button" class="btn btnGenerar" id="btnGenerar">
+                Generar juegos
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="infoContainer">
+          <div class="instruccionesContainer">
+            <h3>Intrucciones</h3>
+            <ol class="intrucciones">
+              <li>
+                En encabezado general se deberá colocar un título acorde, la
+                fecha y la hora del bingo.
+              </li>
+              <li>
+                La primerá paǵina será un juego express, deberá especificar
+                cuantas cartillas por página se generarán, la cantidad de
+                números a generar y una figura que los envuelva.
+              </li>
+
+              <li>
+                La segunda página será a tabla llena, deberá especificar la
+                cantidad de cartillas a generar por página.
+              </li>
+
+              <li>
+                La tercer paǵina (Último Juego) contendrá tablas que formen un
+                número, deberá especificar la cantidad de tablas a generar, no
+                se puede exceder de 10 ya que los tablas en forma de número van
+                del 0 al 9.
+              </li>
+
+              <li>
+                Una vez llenado los datos anteriores, escribirá la cantidad de
+                juegos a generar. Cada juego contendrá 3 hojas con los juegos
+                anteriores. Dele click a generar cuando haya completado todos
+                los datos anteriores.
+              </li>
+            </ol>
+          </div>
+
+          <div class="instruccionesContainer">
+            <div class="loading">
+              <i class="fa-solid fa-spinner fa-spin"></i>
+              <span>Esperando confirmación</span>
+            </div>
+
+            <div class="messages hiden">
+              <p class="message">
+                <i class="fa-solid fa-check"></i>
+                <span>Juegos express generados</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
