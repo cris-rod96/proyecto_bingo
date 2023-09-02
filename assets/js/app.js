@@ -11,6 +11,39 @@ let plantillaInformacion = {
   tbnum_cant_cart: null,
   cantidad_juegos: null,
 };
+let tablasFormaNumeros = {
+  0: {
+    posiciones: [1, 2, 3, 6, 8, 11, 13, 16, 18, 21, 22, 23],
+  },
+  1: {
+    posiciones: [3, 7, 8, 11, 13, 18, 23],
+  },
+
+  2: {
+    posiciones: [1, 2, 3, 8, 11, 12, 13, 16, 21, 22, 23],
+  },
+  3: {
+    posiciones: [1, 2, 3, 8, 11, 12, 13, 18, 21, 22, 23],
+  },
+  4: {
+    posiciones: [1, 3, 6, 8, 11, 12, 13, 18, 23],
+  },
+  5: {
+    posiciones: [1, 2, 3, 6, 11, 12, 13, 18, 21, 22, 23],
+  },
+  6: {
+    posiciones: [1, 2, 3, 6, 11, 12, 13, 16, 18, 21, 22, 23],
+  },
+  7: {
+    posiciones: [1, 2, 3, 8, 13, 18, 23, 6],
+  },
+  8: {
+    posiciones: [1, 2, 3, 6, 8, 11, 12, 13, 16, 18, 21, 22, 23],
+  },
+  9: {
+    posiciones: [1, 2, 3, 6, 8, 11, 12, 13, 18, 23],
+  },
+};
 
 let juegos = {};
 
@@ -125,6 +158,88 @@ function generarSegundoJuego(nombre_pdf, fechaActual) {
     });
   }
   juegos[fechaActual].pdfs.juegos_pdf[nombre_pdf]["tabla_llena"]["tablas"] = [
+    ...tablasGeneradas,
+  ];
+
+  generarTercerJuego(fechaActual, nombre_pdf);
+}
+
+function generarTercerJuego(fechaActual, nombre_pdf) {
+  //* tbnum_cant_Cart es la cantidad de tablas que se generan por hoja en este ultimo juego
+  let { tbnum_cant_cart } = plantillaInformacion;
+  juegos[fechaActual].pdfs.juegos_pdf[nombre_pdf]["juego_numero"] = {
+    tablas: [],
+  };
+
+  // Aqui iran las tablas generadas
+  // La tabla tendra objetos compuesto por un codigo_tabla y el juego_generado
+  let tablasGeneradas = [];
+
+  // Para evitar que se repitan los numeros (formas) se crea este array y cada que sale
+  // un numero se verifica si el número ya salió
+  let numerosRandom = [];
+
+  for (let cant = 1; cant <= tbnum_cant_cart; cant++) {
+    // Llamamos al metodo randomNumber que nos devolverá un número aleatorio entre
+    // 0 y 9
+    let numeroRandom = randomNumber(0, 9);
+
+    //Preguntamos si en el array de numeros random existe el numeroRandom
+    // Si no existe procedemos con el siguiente paso, si existe restamos uno al iterador
+    // Para que vuelva a repetir el ciclo
+
+    if (!numerosRandom.includes(numeroRandom)) {
+      // Pusheamos en numerosRandom el número que salió recientemente
+      numerosRandom.push(numeroRandom);
+
+      // De nuestro objeto tablasFormaNumero donde las keys van del 0 al 9
+      // destructuramos y obtenemos el array de posiciones dentro de la propiedad con la
+      // key (0 - 9) generado
+      let { posiciones } = tablasFormaNumeros[numeroRandom];
+      // Posiciones es un array que contiene las posiciones que juntas formanaran el numero generado
+
+      // Necesitaremos declarar un nuevo array cada que se vaya a generar una nueva
+      // tabla, lo llenaremos con null, luego cada número generado de forma aleatoria
+      // lo añadiremos en cada una de las posiciones descritas en el array posiciones
+      const arrayTabla = new Array(25).fill(null);
+
+      // Para evitar que se repitan numeros, crearemos un array que contenga los números
+      // que se vayan generando
+      const numerosEnTabla = [];
+
+      for (let index = 0; index < posiciones.length; index++) {
+        let nuevoNumero = randomNumber(1, 75);
+        if (nuevoNumero < 10) {
+          nuevoNumero = `0${nuevoNumero}`;
+        }
+        nuevoNumero = nuevoNumero.toString();
+
+        // Preguntamos si no existe el nuevoNumero en numerosEnTabla
+        if (!numerosEnTabla.includes(nuevoNumero)) {
+          // Lo pusheamos
+          numerosEnTabla.push(nuevoNumero);
+
+          // Guardamos el nuemero en arrayTabla en la posiciones[index]
+          arrayTabla[posiciones[index]] = nuevoNumero;
+        } else {
+          // Si ya existe, disminuimos el index en 1 para que se vuelva a generar el
+          // número para esa posición
+          index--;
+        }
+      }
+
+      // Una vez ubicados los numeros de arrayTabla en cada una de la posicion correcta
+      // Pusheamos en tablasGeneradas el arrayTabla y su código correspondiente
+      tablasGeneradas.push({
+        codigo_tabla: generarCodigo(),
+        numeros_tabla: [...arrayTabla],
+      });
+    } else {
+      cant--;
+    }
+  }
+  // Guardamos en nuestro objeto principal
+  juegos[fechaActual].pdfs.juegos_pdf[nombre_pdf]["juego_numero"]["tablas"] = [
     ...tablasGeneradas,
   ];
 }
