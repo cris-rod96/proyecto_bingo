@@ -263,8 +263,8 @@ function generateGames(cantidad_juegos, fechaActual) {
     juegos[fechaActual].pdfs.juegos_pdf[nombrePdf] = {};
     generarPrimerJuego(nombrePdf, fechaActual);
   }
-
-  console.log(juegos);
+  juegos["juego_generado_data"] = fechaActual;
+  localStorage.setItem("bingo_data", JSON.stringify(juegos));
 }
 
 function setInformacionGeneral(e) {

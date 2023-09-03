@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
 }
 img {
   max-width: 100%;
@@ -203,4 +204,129 @@ body {
 
 .hiden {
   display: none;
+}
+
+/* JUEGOS HTML */
+.filterContainer {
+  width: 50%;
+  margin: 20px auto;
+  display: grid;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+/* Juegos Container */
+
+.juegosContainer {
+  width: 80%;
+  margin: 0 auto;
+  border: 2px solid black;
+  padding: 10px;
+}
+
+.juegoExpress {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.tabla {
+  width: 600px;
+  height: 600px;
+  display: grid;
+  grid-template-columns: repeat(2, 10% 90%);
+  margin: 0 auto;
+}
+
+.tabla:last-child {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+.tabla > .tablaCodigo {
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #222;
+}
+
+.tablaCodigo > p {
+  rotate: -90deg;
+  font-size: 40px;
+  color: white;
+}
+
+.tablaNumeros {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 2px solid black;
+}
+
+.numero_tabla {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.numero_tabla:last-child {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+/* Estilos página tabla llena */
+
+.juegoTablaLlena {
+  display: grid;
+  gap: 10px;
+  place-content: center;
+}
+
+.tablaLlena {
+  display: grid;
+  grid-template-columns: repeat(2, 10% 90%);
+
+  border: 2px solid black;
+}
+
+.codigoTablaLlena {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #222;
+  background-color: #222;
+
+  padding: 20px;
+}
+
+.numerosTablaLlena {
+  display: grid;
+  grid-template-rows: repeat(2, 10% 90%);
+}
+
+.tablaContent {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.tablaContent > div {
+  border: 2px solid #222;
+  padding: 40px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.headerTitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  background-color: #222;
+}
+
+.codigoTablaLlena > p {
+  rotate: -90deg;
+  color: white;
+  font-size: 24px;
 }

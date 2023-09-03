@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/img/icono.png" type="image/x-icon" />
+    <title>Juegos Generados</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <div class="mainContainer">
+      <div class="headerContainer">
+        <div class="nav">
+          <div class="icon selected">
+            <img src="./assets/img/icon_bingo.png" alt="Generar tablas" />
+            <span>Generar</span>
+          </div>
+          <div class="icon">
+            <img src="./assets/img/icon_pdf.png" alt="Generar pdf" />
+            <span>PDF</span>
+          </div>
+          <div class="icon">
+            <img src="./assets/img/icon_jugar.png" alt="Jugar Bingo" />
+            <span>Jugar</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mainContainer">
+        <div class="filterContainer">
+          <form class="form" id="formFilter">
+            <div class="formGroup formGroup-double">
+              <div class="formGroup">
+                <label for="select_rango" class="formGroup-label">Rango</label>
+                <select name="" id="select_rango" class="formGroup-select">
+                  <option selected disabled>-- Seleccione el rango --</option>
+                  <option value="1_100">Del 1 al 100</option>
+                  <option value="101_200">Del 101 al 200</option>
+                  <option value="201_300">Del 201 al 300</option>
+                  <option value="301_400">Del 301 al 400</option>
+                </select>
+              </div>
+
+              <div class="formGroup">
+                <label for="select_pdf" class="formGroup-label">PDF</label>
+                <select
+                  name=""
+                  id="select_pdf"
+                  class="formGroup-select"
+                ></select>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="juegosContainer">
+          <div class="juegoExpress" id="juegoExpress">
+            <!-- <div class="tabla">
+              <div class="tablaCodigo">
+                <p>00008090</p>
+              </div>
+              <div class="tablaNumeros">
+                <div class="numero_tabla">1</div>
+                <div class="numero_tabla">2</div>
+                <div class="numero_tabla">3</div>
+                <div class="numero_tabla">4</div>
+                <div class="numero_tabla">5</div>
+                <div class="numero_tabla">6</div>
+                <div class="numero_tabla">7</div>
+              </div>
+            </div> -->
+          </div>
+          <div class="juegoTablaLlena">
+            <div class="tablaLlena">
+              <div class="codigoTablaLlena">
+                <p>00093020</p>
+              </div>
+              <div class="numerosTablaLlena">
+                <div class="tablaContent">
+                  <div class="headerTitle">B</div>
+                  <div class="headerTitle">I</div>
+                  <div class="headerTitle">N</div>
+                  <div class="headerTitle">G</div>
+                  <div class="headerTitle">O</div>
+                  <div>1</div>
+                  <div>2</div>
+                  <div>3</div>
+                  <div>4</div>
+                  <div>5</div>
+                  <div>6</div>
+                  <div>7</div>
+                  <div>8</div>
+                  <div>9</div>
+                  <div>10</div>
+                  <div>11</div>
+                  <div>12</div>
+                  <div></div>
+                  <div>14</div>
+                  <div>15</div>
+                  <div>16</div>
+                  <div>17</div>
+                  <div>18</div>
+                  <div>19</div>
+                  <div>20</div>
+                  <div>21</div>
+                  <div>22</div>
+                  <div>23</div>
+                  <div>24</div>
+                  <div>25</div>
+              </div>
+            </div>
+          </div>
+          <div class="juegoNúmeros"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/juegos.js"></script>
+  </body>
+</html>
