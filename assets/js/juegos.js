@@ -1,5 +1,56 @@
+function printJuegoNumeros(tables) {
+  let { tablas } = tables.juego_numeros;
+  console.log(tablas);
+}
+
+function printTablasLlena(tables) {
+  let { tablas } = tables.tabla_llena;
+  console.log(tables);
+  let containerJuegoNumeros = document.querySelector("#juegoNumeros");
+  containerJuegoNumeros.innerHTML = "";
+
+  for (let tabla of tablas) {
+    const divTablaLLena = document.createElement("div");
+    const divCodigoLleno = document.createElement("div");
+    const parrafoCodigo = document.createElement("p");
+    divTablaLLena.className = "tablaLlena";
+    divCodigoLleno.className = "codigoLleno";
+    parrafoCodigo.innerHTML = tabla.codigo_tabla;
+
+    const divLlenoNumeros = document.createElement("div");
+    divLlenoNumeros.className = "llenoNumeros";
+    const divNumerosHeader = document.createElement("div");
+    divNumerosHeader.className = "numerosHeader";
+
+    let { posiciones } = tabla;
+    const numeroContent = document.createElement("div");
+    numeroContent.className = "numerosContent";
+
+    for (let key of ["B", "I", "N", "G", "O"]) {
+      const divKey = document.createElement("div");
+      divKey.innerHTML = key;
+      divNumerosHeader.appendChild(divKey);
+    }
+
+    for (let i = 0; i < posiciones; i++) {
+      console.log(posiciones[i]);
+    }
+
+    divLlenoNumeros.appendChild(divNumerosHeader);
+    divLlenoNumeros.appendChild(numeroContent);
+    divCodigoLleno.appendChild(parrafoCodigo);
+    divTablaLLena.appendChild(divCodigoLleno);
+    divTablaLLena.appendChild(divLlenoNumeros);
+
+    containerJuegoNumeros.appendChild(divTablaLLena);
+  }
+
+  printJuegoNumeros(tables);
+}
+
 function printTables(tables) {
   let { tablas } = tables.express;
+  // console.log(tables);
   //   PrintExpress
   let containerExpress = document.querySelector("#juegoExpress");
   containerExpress.innerHTML = "";
@@ -26,6 +77,8 @@ function printTables(tables) {
 
     containerExpress.appendChild(divTabla);
   }
+
+  printTablasLlena(tables);
 }
 
 function fillSelectPDF(keys, juegos_pdf) {
